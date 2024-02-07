@@ -1,15 +1,15 @@
 {
-  "name": "@wsfe/vue-tree",
+  "name": "@kxxxl-front-end/vue-tree",
   "version": "3.2.0",
   "types": "./types",
   "description": "A vue tree component using virtual list.",
-  "main": "./dist/v3/vue-tree.umd.js",
-  "module": "./dist/v3/vue-tree.mjs",
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
   "exports": {
     ".": {
       "types": "./types/index.d.ts",
-      "import": "./dist/v3/vue-tree.mjs",
-      "require": "./dist/v3/vue-tree.umd.js"
+      "import": "./src/index.ts",
+      "require": "./src/index.ts"
     },
     "./style.css": "./dist/v3/style.css",
     "./*": "./*"
@@ -37,10 +37,6 @@
     "src",
     "types"
   ],
-  "author": {
-    "name": "ChuChencheng",
-    "url": "https://github.com/ChuChencheng"
-  },
   "keywords": [
     "vue",
     "vue2",
@@ -56,7 +52,7 @@
     "vue tree component",
     "虚拟树"
   ],
-  "homepage": "https://github.com/wsfe/vue-tree",
+  "homepage": "https://github.com/defghy/vue-tree",
   "license": "MIT",
   "dependencies": {
     "vue-demi": "latest"
