@@ -15,6 +15,7 @@
           :key="node[keyField]"
           :data="node"
           :getNode="getNode"
+          :hasSlot="hasSlot"
           v-on="treeNodeListeners"
           :class="
             typeof nodeClassName === 'function'
@@ -29,7 +30,11 @@
           @select="handleNodeSelect"
           @expand="handleNodeExpand"
           @node-drop="handleNodeDrop"
-        />
+        >
+          <template v-if="hasSlot" #node="{ node }">
+            <slot name="node" :node="node" />
+          </template>
+        </CTreeNode>
         <div :style="bottomSpaceStyles"></div>
       </div>
     </div>
@@ -1067,6 +1072,9 @@ export default defineComponent({
     })
 
     attachStoreEvents()
+
+    const hasSlot = !!(ctx.slots?.node || (ctx as any).$scopedSlots.node);
+
     return {
       nonReactive,
       /** 未加载选中的节点，展示已选时生成，其他情况下没用 */
@@ -1168,7 +1176,8 @@ export default defineComponent({
       getNode,
       scrollArea,
       iframe,
-      methods
+      methods,
+      hasSlot
     }
   }
 })

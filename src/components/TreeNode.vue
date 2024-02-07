@@ -26,7 +26,8 @@
         v-on="dragListeners"
         :draggable="draggable && !disableAll && !data?.disabled"
       >
-        <component v-if="renderFunction" :is="renderComponent"></component>
+        <slot v-if="hasSlot" name="node" :node="fullData" />
+        <component v-else-if="renderFunction" :is="renderComponent"></component>
         <template v-else>{{ data ? data[titleField] : '' }}</template>
       </div>
     </div>
@@ -88,10 +89,12 @@ export default defineComponent({
 
     /** 是否可放置 */
     droppable: Boolean,
-    getNode: Function as PropType<GetNodeFn>
+    getNode: Function as PropType<GetNodeFn>,
+    hasSlot: Boolean // 使用slot渲染
   },
   emits: [...TREE_NODE_EVENTS],
-  setup(props, { emit }) {
+  setup(props, ctx) {
+    const { emit } = ctx
     const dragoverBody = ref(false)
     const dragoverBefore = ref(false)
     const dragoverAfter = ref(false)
@@ -202,6 +205,7 @@ export default defineComponent({
         }
       })
     })
+
     const dragListeners = computed(() => {
       let result = {}
       if (props.draggable && !props.disableAll && !props.data?.disabled) {
@@ -350,7 +354,7 @@ export default defineComponent({
       handleSelect,
       handleDblclick,
       handleRightClick,
-      nodeBody
+      nodeBody,
     }
   }
 })
