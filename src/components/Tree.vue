@@ -1075,7 +1075,7 @@ export default defineComponent({
 
     attachStoreEvents()
 
-    const hasSlot = !!(ctx.slots?.node || (ctx as any).$scopedSlots.node);
+    const hasSlot = !!(ctx.slots?.node || (ctx as any).$scopedSlots?.node);
 
     return {
       nonReactive,
