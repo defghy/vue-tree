@@ -172,19 +172,28 @@ declare const _default: import("vue-demi").DefineComponent<{
     nodeClassName: {
         type: (ObjectConstructor | StringConstructor | (() => Array<string | object>) | (() => (node: TreeNode) => string | object | Array<string | object>))[];
     };
-    /**
-     * 使用 padding 代替 margin 来展示子节点缩进
-     * 此 Prop 是为了方便样式定制，在下个大版本将全部使用 padding
-     * @deprecated
-     */
-    usePadding: {
-        type: BooleanConstructor;
-        default: boolean;
-    };
 }, {
     nonReactive: INonReactiveData;
     /** 未加载选中的节点，展示已选时生成，其他情况下没用 */
-    unloadCheckedNodes: TreeNode[];
+    unloadCheckedNodes: Ref<{
+        [x: string]: any;
+        _level: number;
+        checked: boolean;
+        selected: boolean;
+        indeterminate: boolean;
+        disabled: boolean;
+        expand: boolean;
+        visible: boolean;
+        _filterVisible: boolean;
+        _parent: any | null;
+        children: any[];
+        isLeaf: boolean;
+        _loading: boolean;
+        _loaded: boolean;
+        readonly _keyField: string;
+        readonly _remote: boolean;
+        setChildren: (children: ITreeNodeOptions[]) => void;
+    }[]>;
     /** 可见节点个数 */
     blockLength: Ref<number>;
     /** 可见节点总高度 */
@@ -322,6 +331,7 @@ declare const _default: import("vue-demi").DefineComponent<{
         updateRenderNodes: (isScroll?: boolean) => void;
         getNode: (key: TreeNodeKeyType) => TreeNode | null;
     };
+    hasSlot: boolean;
 }, unknown, {}, {}, import("vue-demi").ComponentOptionsMixin, import("vue-demi").ComponentOptionsMixin, string[], string, import("vue-demi").VNodeProps & import("vue-demi").AllowedComponentProps & import("vue-demi").ComponentCustomProps, Readonly<import("vue-demi").ExtractPropTypes<{
     /** 单选模式下为字符串或数字，多选模式下为数组或者以 separator 分隔的字符串。当即可单选又可多选时，value 是多选的值 */
     modelValue: PropType<string | number | TreeNodeKeyType[]>;
@@ -482,15 +492,6 @@ declare const _default: import("vue-demi").DefineComponent<{
     nodeClassName: {
         type: (ObjectConstructor | StringConstructor | (() => Array<string | object>) | (() => (node: TreeNode) => string | object | Array<string | object>))[];
     };
-    /**
-     * 使用 padding 代替 margin 来展示子节点缩进
-     * 此 Prop 是为了方便样式定制，在下个大版本将全部使用 padding
-     * @deprecated
-     */
-    usePadding: {
-        type: BooleanConstructor;
-        default: boolean;
-    };
 }>> & {
     [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
 }, {
@@ -522,6 +523,5 @@ declare const _default: import("vue-demi").DefineComponent<{
     nodeIndent: number;
     renderNodeAmount: number;
     bufferNodeAmount: number;
-    usePadding: boolean;
 }>;
 export default _default;

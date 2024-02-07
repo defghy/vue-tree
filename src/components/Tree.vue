@@ -15,6 +15,7 @@
           :key="node[keyField]"
           :data="node"
           :getNode="getNode"
+          :hasSlot="hasSlot"
           v-on="treeNodeListeners"
           :class="
             typeof nodeClassName === 'function'
@@ -23,13 +24,19 @@
           "
           :style="{
             minHeight: `${nodeMinHeight}px`,
-            paddingLeft: `${node._level * nodeIndent}px`
+            paddingLeft: `${node._level * nodeIndent}px`,
           }"
           @check="handleNodeCheck"
           @select="handleNodeSelect"
           @expand="handleNodeExpand"
           @node-drop="handleNodeDrop"
-        />
+        >
+          <!-- @vue-skip -->
+          <template v-if="hasSlot" #node="data">
+            <!-- @vue-skip -->
+            <slot name="node" :node="data.node" />
+          </template>
+        </CTreeNode>
         <div :style="bottomSpaceStyles"></div>
       </div>
     </div>
@@ -348,7 +355,7 @@ export default defineComponent({
       } else if (newVal === valueCache) return true
       return false
     }
-    let unloadCheckedNodes = reactive([]) as TreeNode[]
+    let unloadCheckedNodes = ref<TreeNode[]>([])
     let renderNodes = ref([]) as Ref<TreeNode[]>
     const blockLength = ref(0)
     const blockAreaHeight = ref(0)
@@ -658,7 +665,7 @@ export default defineComponent({
             !!props.load
           )
         })
-        unloadCheckedNodes = unloadNodes as TreeNode[]
+        unloadCheckedNodes.value = unloadNodes as TreeNode[]
         nonReactive.blockNodes.push(...unloadNodes)
         updateBlockData()
         updateRender()
@@ -724,9 +731,9 @@ export default defineComponent({
     }
 
     function updateUnloadStatus(): void {
-      if (unloadCheckedNodes.length) {
+      if (unloadCheckedNodes.value.length) {
         const unloadKeys = nonReactive.store.getUnloadCheckedKeys()
-        unloadCheckedNodes.forEach(node => {
+        unloadCheckedNodes.value.forEach(node => {
           node.checked = unloadKeys.indexOf(node[props.keyField]) > -1
         })
       }
@@ -1067,6 +1074,9 @@ export default defineComponent({
     })
 
     attachStoreEvents()
+
+    const hasSlot = !!(ctx.slots?.node || (ctx as any).$scopedSlots.node);
+
     return {
       nonReactive,
       /** 未加载选中的节点，展示已选时生成，其他情况下没用 */
@@ -1168,7 +1178,8 @@ export default defineComponent({
       getNode,
       scrollArea,
       iframe,
-      methods
+      methods,
+      hasSlot
     }
   }
 })
