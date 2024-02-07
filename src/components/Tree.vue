@@ -24,15 +24,17 @@
           "
           :style="{
             minHeight: `${nodeMinHeight}px`,
-            paddingLeft: `${node._level * nodeIndent}px`
+            paddingLeft: `${node._level * nodeIndent}px`,
           }"
           @check="handleNodeCheck"
           @select="handleNodeSelect"
           @expand="handleNodeExpand"
           @node-drop="handleNodeDrop"
         >
-          <template v-if="hasSlot" #node="{ node }">
-            <slot name="node" :node="node" />
+          <!-- @vue-skip -->
+          <template v-if="hasSlot" #node="data">
+            <!-- @vue-skip -->
+            <slot name="node" :node="data.node" />
           </template>
         </CTreeNode>
         <div :style="bottomSpaceStyles"></div>

@@ -26,6 +26,7 @@ declare const _default: import("vue-demi").DefineComponent<{
     /** 是否可放置 */
     droppable: BooleanConstructor;
     getNode: PropType<GetNodeFn>;
+    hasSlot: BooleanConstructor;
 }, {
     /** 节点拖拽 dragover */
     dragoverBody: import("vue-demi").Ref<boolean>;
@@ -93,6 +94,7 @@ declare const _default: import("vue-demi").DefineComponent<{
     /** 是否可放置 */
     droppable: BooleanConstructor;
     getNode: PropType<GetNodeFn>;
+    hasSlot: BooleanConstructor;
 }>> & {
     [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
 }, {
@@ -103,5 +105,6 @@ declare const _default: import("vue-demi").DefineComponent<{
     disableAll: boolean;
     draggable: boolean;
     droppable: boolean;
+    hasSlot: boolean;
 }>;
 export default _default;
