@@ -172,15 +172,6 @@ declare const _default: import("vue-demi").DefineComponent<{
     nodeClassName: {
         type: (ObjectConstructor | StringConstructor | (() => Array<string | object>) | (() => (node: TreeNode) => string | object | Array<string | object>))[];
     };
-    /**
-     * 使用 padding 代替 margin 来展示子节点缩进
-     * 此 Prop 是为了方便样式定制，在下个大版本将全部使用 padding
-     * @deprecated
-     */
-    usePadding: {
-        type: BooleanConstructor;
-        default: boolean;
-    };
 }, {
     nonReactive: INonReactiveData;
     /** 未加载选中的节点，展示已选时生成，其他情况下没用 */
@@ -482,15 +473,6 @@ declare const _default: import("vue-demi").DefineComponent<{
     nodeClassName: {
         type: (ObjectConstructor | StringConstructor | (() => Array<string | object>) | (() => (node: TreeNode) => string | object | Array<string | object>))[];
     };
-    /**
-     * 使用 padding 代替 margin 来展示子节点缩进
-     * 此 Prop 是为了方便样式定制，在下个大版本将全部使用 padding
-     * @deprecated
-     */
-    usePadding: {
-        type: BooleanConstructor;
-        default: boolean;
-    };
 }>> & {
     [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
 }, {
@@ -522,6 +504,5 @@ declare const _default: import("vue-demi").DefineComponent<{
     nodeIndent: number;
     renderNodeAmount: number;
     bufferNodeAmount: number;
-    usePadding: boolean;
 }>;
 export default _default;

@@ -45,7 +45,7 @@ declare const _default: import("vue-demi").DefineComponent<{
     dropAfterCls: import("vue-demi").ComputedRef<(string | {
         [x: string]: boolean;
     })[]>;
-    squareCls: import("vue-demi").ComputedRef<string[]>;
+    checkboxWrapperCls: import("vue-demi").ComputedRef<string[]>;
     expandCls: import("vue-demi").ComputedRef<(string | {
         [x: string]: boolean | undefined;
     })[]>;
