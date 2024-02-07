@@ -348,7 +348,7 @@ export default defineComponent({
       } else if (newVal === valueCache) return true
       return false
     }
-    let unloadCheckedNodes = reactive([]) as TreeNode[]
+    let unloadCheckedNodes = ref<TreeNode[]>([])
     let renderNodes = ref([]) as Ref<TreeNode[]>
     const blockLength = ref(0)
     const blockAreaHeight = ref(0)
@@ -658,7 +658,7 @@ export default defineComponent({
             !!props.load
           )
         })
-        unloadCheckedNodes = unloadNodes as TreeNode[]
+        unloadCheckedNodes.value = unloadNodes as TreeNode[]
         nonReactive.blockNodes.push(...unloadNodes)
         updateBlockData()
         updateRender()
@@ -724,9 +724,9 @@ export default defineComponent({
     }
 
     function updateUnloadStatus(): void {
-      if (unloadCheckedNodes.length) {
+      if (unloadCheckedNodes.value.length) {
         const unloadKeys = nonReactive.store.getUnloadCheckedKeys()
-        unloadCheckedNodes.forEach(node => {
+        unloadCheckedNodes.value.forEach(node => {
           node.checked = unloadKeys.indexOf(node[props.keyField]) > -1
         })
       }
