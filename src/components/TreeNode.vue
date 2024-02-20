@@ -197,7 +197,6 @@ export default defineComponent({
     const renderFunction = props.data?.render || props.render || null
     const renderComponent = computed(() => {
       return defineComponent({
-        name: 'Render',
         functional: true,
         render() {
           if (typeof renderFunction !== 'function') return h('div')

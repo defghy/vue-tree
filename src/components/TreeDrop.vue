@@ -56,7 +56,6 @@ import {
   watch,
   nextTick,
   PropType,
-  withCtx
 } from 'vue-demi'
 import CTreeSearch from './TreeSearch.vue'
 import { TreeNode } from '../store'
