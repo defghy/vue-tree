@@ -14,7 +14,7 @@
     "skipLibCheck": true,
     "declaration": true,
     "rootDir": "./src",
-    "declarationDir": "types",
+    "declarationDir": "./types",
     "paths": {
       "@/*": ["./src/*"]
     }

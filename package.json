@@ -3,13 +3,13 @@
   "version": "3.2.2",
   "types": "./types",
   "description": "A vue tree component using virtual list.",
-  "main": "./src/index.ts",
-  "module": "./src/index.ts",
+  "main": "./dist/v3/vue-tree.umd.js",
+  "module": "./dist/v3/vue-tree.mjs",
   "exports": {
     ".": {
       "types": "./types/index.d.ts",
-      "import": "./src/index.ts",
-      "require": "./src/index.ts"
+      "import": "./dist/v3/vue-tree.mjs",
+      "require": "./dist/v3/vue-tree.umd.js"
     },
     "./style.css": "./dist/v3/style.css",
     "./*": "./*"
@@ -78,7 +78,7 @@
     "vite": "^4.1.1",
     "vue": "^3.2.47",
     "vue-jest": "5.0.0-alpha.10",
-    "vue-tsc": "^1.0.24"
+    "vue-tsc": "^1.8.27"
   },
   "peerDependenciesMeta": {
     "@vue/composition-api": {
