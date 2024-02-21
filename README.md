@@ -21,7 +21,7 @@ pnpm link --global
 pnpm link --global @kxxxl-front-end/vue-tree
 ```
 
-# 功能描述
+# 功能说明
 
 ## node slot
 
