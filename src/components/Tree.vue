@@ -11,7 +11,7 @@
         <div :style="topSpaceStyles"></div>
         <CTreeNode
           v-for="node in renderNodes"
-          v-bind="$props"
+          v-bind="nodeProps"
           :key="node[keyField]"
           :data="node"
           :getNode="getNode"
@@ -420,6 +420,19 @@ export default defineComponent({
       }
       return prev
     }, {} as Record<string, Function>)
+    const nodeProps = computed(() => {
+      return {
+        titleField: props.titleField,
+        keyField: props.keyField,
+        render: props.render,
+        droppable: props.droppable,
+        draggable: props.draggable,
+        disableAll: props.disableAll,
+        unselectOnClick: props.unselectOnClick,
+        selectable: props.selectable,
+        checkable: props.checkable,
+      };
+    });
 
     const getInitialNonReactiveValues = (): INonReactiveData => {
       return {
@@ -978,7 +991,7 @@ export default defineComponent({
       updateRender,
       updateRenderAmount,
       updateRenderNodes,
-      getNode
+      getNode,
     }
     // ctx.expose({
     //   methods,
@@ -1179,7 +1192,8 @@ export default defineComponent({
       scrollArea,
       iframe,
       methods,
-      hasSlot
+      hasSlot,
+      nodeProps
     }
   }
 })
