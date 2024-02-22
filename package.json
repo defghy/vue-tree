@@ -7,7 +7,7 @@
   "module": "./src/index.ts",
   "exports": {
     ".": {
-      "types": "./types/index.d.ts",
+      "types": "./types2/index.d.ts",
       "import": "./src/index.ts",
       "require": "./src/index.ts"
     },
@@ -16,10 +16,10 @@
   },
   "scripts": {
     "dev": "vite",
-    "dts": "vue-tsc --declaration --emitDeclarationOnly",
-    "build": "npm run dts && npm run build:2 && npm run build:3",
+    "dts": "vue-tsc --declaration --emitDeclarationOnly --declarationDir types3",
+    "build": "npm run build:2 && npm run build:3",
     "build:2": "pnpm --filter vue2 run build",
-    "build:3": "vite build",
+    "build:3": "npm run dts && vite build",
     "docs": "vue-tsc --noEmit && vite build -c examples/vite.config.ts",
     "preview": "vite preview",
     "test": "jest --watch",

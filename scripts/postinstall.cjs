@@ -17,7 +17,7 @@ function switchVersion() {
     module: `${distDir}/vue-tree.mjs`,
     exports: {
       '.': {
-        types: './types/index.d.ts',
+        types: `./types${version.startsWith('2.') ? '2' : '3'}/index.d.ts`,
         import: `${distDir}/vue-tree.mjs`,
         require: `${distDir}/vue-tree.umd.js`
       },
