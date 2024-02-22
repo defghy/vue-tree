@@ -60,13 +60,7 @@ declare const _default: import("vue-demi").DefineComponent<{
     fullData: import("vue-demi").ComputedRef<any>;
     showCheckbox: import("vue-demi").ComputedRef<boolean>;
     renderFunction: any;
-    renderComponent: import("vue-demi").ComputedRef<import("vue-demi").DefineComponent<Readonly<{
-        [x: string]: any;
-    }>, {}, {}, import("vue-demi").ComponentComputedOptions, import("vue-demi").ComponentMethodOptions, import("vue-demi").ComponentOptionsMixin, import("vue-demi").ComponentOptionsMixin, {}, string, Readonly<import("vue-demi").ExtractPropTypes<Readonly<{
-        [x: string]: any;
-    }>>>, {
-        [x: string]: any;
-    }>>;
+    renderComponent: import("vue-demi").ComputedRef<import("vue-demi").DefineComponent<{}, {}, {}, {}, {}, import("vue-demi").ComponentOptionsMixin, import("vue-demi").ComponentOptionsMixin, {}, string, import("vue-demi").PublicProps, Readonly<import("vue-demi").ExtractPropTypes<{}>>, {}, {}>>;
     dragListeners: import("vue-demi").ComputedRef<{}>;
     dropListeners: import("vue-demi").ComputedRef<{}>;
     handleExpand: () => void;
@@ -75,7 +69,7 @@ declare const _default: import("vue-demi").DefineComponent<{
     handleDblclick: (e: MouseEvent) => void;
     handleRightClick: (e: MouseEvent) => void;
     nodeBody: import("vue-demi").Ref<any>;
-}, {}, {}, {}, import("vue-demi").ComponentOptionsMixin, import("vue-demi").ComponentOptionsMixin, string[], string, Readonly<import("vue-demi").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue-demi").ComponentOptionsMixin, import("vue-demi").ComponentOptionsMixin, string[], string, import("vue-demi").PublicProps, Readonly<import("vue-demi").ExtractPropTypes<{
     /** 节点数据，注意！！为了性能，不让 Vue 监听过多属性，这个 data 不是完整的 TreeNode ，不包括 _parent 和 children 属性 */
     data: PropType<TreeNode>;
     /** 节点标题字段 */
@@ -101,7 +95,10 @@ declare const _default: import("vue-demi").DefineComponent<{
     droppable: BooleanConstructor;
     getNode: PropType<GetNodeFn>;
     hasSlot: BooleanConstructor;
-}>>, {
+}>> & {
+    [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
+}, {
+    titleField: string;
     checkable: boolean;
     selectable: boolean;
     unselectOnClick: boolean;
@@ -109,6 +106,5 @@ declare const _default: import("vue-demi").DefineComponent<{
     draggable: boolean;
     droppable: boolean;
     hasSlot: boolean;
-    titleField: string;
-}>;
+}, {}>;
 export default _default;

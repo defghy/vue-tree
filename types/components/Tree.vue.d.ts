@@ -332,7 +332,18 @@ declare const _default: import("vue-demi").DefineComponent<{
         getNode: (key: TreeNodeKeyType) => TreeNode | null;
     };
     hasSlot: boolean;
-}, {}, {}, {}, import("vue-demi").ComponentOptionsMixin, import("vue-demi").ComponentOptionsMixin, string[], string, Readonly<import("vue-demi").ExtractPropTypes<{
+    nodeProps: import("vue-demi").ComputedRef<{
+        titleField: string;
+        keyField: string;
+        render: ((node: TreeNode) => VNode) | undefined;
+        droppable: boolean;
+        draggable: boolean;
+        disableAll: boolean;
+        unselectOnClick: boolean;
+        selectable: boolean;
+        checkable: boolean;
+    }>;
+}, unknown, {}, {}, import("vue-demi").ComponentOptionsMixin, import("vue-demi").ComponentOptionsMixin, string[], string, import("vue-demi").PublicProps, Readonly<import("vue-demi").ExtractPropTypes<{
     /** 单选模式下为字符串或数字，多选模式下为数组或者以 separator 分隔的字符串。当即可单选又可多选时，value 是多选的值 */
     modelValue: PropType<string | number | TreeNodeKeyType[]>;
     /** 传入的树数据。数据量大时，不建议通过 props 传入数据，建议用 `setData` 方法代替 */
@@ -492,7 +503,9 @@ declare const _default: import("vue-demi").DefineComponent<{
     nodeClassName: {
         type: (ObjectConstructor | StringConstructor | (() => Array<string | object>) | (() => (node: TreeNode) => string | object | Array<string | object>))[];
     };
-}>>, {
+}>> & {
+    [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
+}, {
     data: AnyPropsArrayType;
     keyField: string;
     ignoreMode: "none" | "children" | "parents";
@@ -500,13 +513,13 @@ declare const _default: import("vue-demi").DefineComponent<{
     cascade: boolean;
     defaultExpandAll: boolean;
     expandOnFilter: boolean;
+    titleField: string;
     checkable: boolean;
     selectable: boolean;
     unselectOnClick: boolean;
     disableAll: boolean;
     draggable: boolean;
     droppable: boolean;
-    titleField: string;
     unloadDataList: AnyPropsArrayType;
     showUnloadCheckedNodes: boolean;
     emptyText: string;
@@ -521,5 +534,5 @@ declare const _default: import("vue-demi").DefineComponent<{
     nodeIndent: number;
     renderNodeAmount: number;
     bufferNodeAmount: number;
-}>;
+}, {}>;
 export default _default;

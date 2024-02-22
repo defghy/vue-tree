@@ -91,7 +91,7 @@ declare const _default: import("vue-demi").DefineComponent<{
     onSetData: () => void;
     clearKeyword: () => void;
     search: (keyword1?: string) => Promise<void>;
-}, {}, {}, {}, import("vue-demi").ComponentOptionsMixin, import("vue-demi").ComponentOptionsMixin, ("search" | "set-data" | "checked-change" | "update:modelValue")[], string, Readonly<import("vue-demi").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue-demi").ComponentOptionsMixin, import("vue-demi").ComponentOptionsMixin, ("search" | "set-data" | "checked-change" | "update:modelValue")[], "search" | "set-data" | "checked-change" | "update:modelValue", import("vue-demi").PublicProps, Readonly<import("vue-demi").ExtractPropTypes<{
     /** 兼容 Vue 2.5.16 bug */
     modelValue: PropType<string | number | TreeNodeKeyType[]>;
     /** 搜索输入框的 placeholder */
@@ -141,7 +141,12 @@ declare const _default: import("vue-demi").DefineComponent<{
         type: NumberConstructor;
         default: number;
     };
-}>>, {
+}>> & {
+    onSearch?: ((...args: any[]) => any) | undefined;
+    "onSet-data"?: ((...args: any[]) => any) | undefined;
+    "onChecked-change"?: ((...args: any[]) => any) | undefined;
+    "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+}, {
     searchPlaceholder: string;
     showCheckAll: boolean;
     showCheckedButton: boolean;
@@ -151,5 +156,5 @@ declare const _default: import("vue-demi").DefineComponent<{
     searchDisabled: boolean;
     searchRemote: boolean;
     searchDebounceTime: number;
-}>;
+}, {}>;
 export default _default;

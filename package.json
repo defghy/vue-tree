@@ -76,7 +76,7 @@
     "ts-jest": "26.5.6",
     "typescript": "^4.9.5",
     "vite": "^4.1.1",
-    "vue": "2.7.16",
+    "vue": "^3.2.47",
     "vue-jest": "5.0.0-alpha.10",
     "vue-tsc": "^1.8.27"
   },
@@ -87,9 +87,9 @@
   },
   "pnpm": {
     "packageExtensions": {
-      "vue-template-compiler@2.6.14": {
+      "vue-template-compiler@2.7.16": {
         "peerDependencies": {
-          "vue": "2.6.14"
+          "vue": "2.7.16"
         }
       }
     }
