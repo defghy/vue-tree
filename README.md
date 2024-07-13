@@ -18,7 +18,10 @@ bugfix
 pnpm link --global
 
 # 依赖目录
+cd packages/aweb-ui
+rm ./node_modules/@kxxxl-front-end/vue-tree
 pnpm link --global @kxxxl-front-end/vue-tree
+rm -rf ./node_modules/.vite
 ```
 
 # 功能说明
